@@ -27,10 +27,10 @@ class Filters
     public array $globals = [
         'before' => [
             // 'global'
-            'global' => ['except' => 'api/*'],
+            // 'global' => ['except' => 'api/*'],
         ],
         'after' => [
-            'jsonResponse'
+            // 'jsonResponse'
         ],
     ];
 
