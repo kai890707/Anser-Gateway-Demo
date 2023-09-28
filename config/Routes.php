@@ -11,6 +11,7 @@ return function (RouteCollector $route) {
     /**
      * custom
      */
+    $route->get('/createOrder',[\App\Controllers\V2\CreateOrder::class, 'createOrder']);
     $route->get('/test',[\App\Controllers\TestController::class, 'index'],['filter'=>'test2:dual,noreturn']);
     $route->post('/test',[\App\Controllers\TestController::class, 'show'],['filter'=>'test2:dual,noreturn']);
 
