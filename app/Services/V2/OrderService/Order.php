@@ -54,23 +54,31 @@ class Order extends SimpleService
         ->failHandler(function (
             ActionException $e
         ){
-            $errorResult = $e->getResponse()->getBody();
-            $data = json_decode($errorResult, true);
             if ($e->isServerError()) {
-                log_message("error", $e->getMessage());
-                $e->getAction()->setMeaningData([]);
-            }
-
-            if ($e->isClientError()) {
-                $errorResult = $errorResult->getContents();
-                $data = json_decode($errorResult, true);
-                log_message("notice", $e->getMessage());
-                $e->getAction()->setMeaningData([]);
-            }
-
-            if ($e->isConnectError()) {
-                log_message("critical", $e->getMessage());
-                $e->getAction()->setMeaningData([]);
+                log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                $e->getAction()->setMeaningData([
+                    "code" => 500,
+                    "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                ]);
+            }else if ($e->isClientError()) {
+                log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                $e->getAction()->setMeaningData([
+                    "code" => 500,
+                    "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                ]);
+            }else if ($e->isConnectError()) {
+                log_message('info',$e->getMessage());
+                $e->getAction()->setMeaningData([
+                    "code" => 500,
+                    "msg" => $e->getMessage()
+                ]);
+            }else {
+                log_message('error',$e->getMessage());
+                var_dump($e->getMessage());
+                $e->getAction()->setMeaningData([
+                    "code" => 500,
+                    "msg" => $e->getMessage()
+                ]);
             }
         });
         return $action;
@@ -99,23 +107,31 @@ class Order extends SimpleService
             ->failHandler(function (
                 ActionException $e
             ) {
-                $errorResult = $e->getResponse()->getBody();
-                $data = json_decode($errorResult, true);
                 if ($e->isServerError()) {
-                    log_message("error", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isClientError()) {
-                    $errorResult = $errorResult->getContents();
-                    $data = json_decode($errorResult, true);
-                    log_message("notice", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isConnectError()) {
-                    log_message("critical", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isClientError()) {
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isConnectError()) {
+                    log_message('info',$e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
+                }else {
+                    log_message('error',$e->getMessage());
+                    var_dump($e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
                 }
             });
         return $action;
@@ -155,23 +171,31 @@ class Order extends SimpleService
             ->failHandler(function (
                 ActionException $e
             ){
-                $errorResult = $e->getResponse()->getBody();
-                $data = json_decode($errorResult, true);
                 if ($e->isServerError()) {
-                    log_message("error", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isClientError()) {
-                    $errorResult = $errorResult->getContents();
-                    $data = json_decode($errorResult, true);
-                    log_message("notice", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isConnectError()) {
-                    log_message("critical", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isClientError()) {
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isConnectError()) {
+                    log_message('info',$e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
+                }else {
+                    log_message('error',$e->getMessage());
+                    var_dump($e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
                 }
             });
         return $action;
@@ -213,23 +237,31 @@ class Order extends SimpleService
             ->failHandler(function (
                 ActionException $e
             ){
-                $errorResult = $e->getResponse()->getBody();
-                $data = json_decode($errorResult, true);
                 if ($e->isServerError()) {
-                    log_message("error", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isClientError()) {
-                    $errorResult = $e->getResponse()->getBody()->getContents();
-                    $data = json_decode($errorResult, true);
-                    log_message("notice", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isConnectError()) {
-                    log_message("critical", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isClientError()) {
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isConnectError()) {
+                    log_message('info',$e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
+                }else {
+                    log_message('error',$e->getMessage());
+                    var_dump($e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
                 }
             });
         return $action;
@@ -258,23 +290,31 @@ class Order extends SimpleService
             ->failHandler(function (
                 ActionException $e
             ) {
-                $errorResult = $e->getResponse()->getBody();
-                $data = json_decode($errorResult, true);
                 if ($e->isServerError()) {
-                    log_message("error", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isClientError()) {
-                    $errorResult = $errorResult->getContents();
-                    $data = json_decode($errorResult, true);
-                    log_message("notice", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
-                }
-
-                if ($e->isConnectError()) {
-                    log_message("critical", $e->getMessage());
-                    $e->getAction()->setMeaningData([]);
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isClientError()) {
+                    log_message('info',$e->getAction()->getResponse()->getBody()->getContents());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getAction()->getResponse()->getBody()->getContents()
+                    ]);
+                }else if ($e->isConnectError()) {
+                    log_message('info',$e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
+                }else {
+                    log_message('error',$e->getMessage());
+                    var_dump($e->getMessage());
+                    $e->getAction()->setMeaningData([
+                        "code" => 500,
+                        "msg" => $e->getMessage()
+                    ]);
                 }
             });
         return $action;
